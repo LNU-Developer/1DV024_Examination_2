@@ -25,7 +25,7 @@ namespace Examination_2
         //Constructor
         protected Shape(ShapeType shapeType) 
         {
-            ShapeType ShapeType = shapeType;
+            ShapeType = shapeType;
         }
 
         //Methods
