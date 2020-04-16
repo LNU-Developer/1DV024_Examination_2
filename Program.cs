@@ -6,9 +6,9 @@ namespace Examination_2
     {
         static void Main()
         {   
-           Rectangle test = new Rectangle(1,1);
+           Ellipse test = new Ellipse(2);
            
-           Console.WriteLine(test.ToString("R"));
+           Console.WriteLine(test.ToString("G"));
         }
     }
 }
