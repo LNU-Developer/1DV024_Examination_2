@@ -62,10 +62,12 @@ namespace Examination_2
         {
             if (format == "G" || format == "" || format == null)
             {
-                return $@"Längd: {Length}
+                return $@"
+                Längd: {Length}
                 Bredd: {Width}
                 Omkrets: {Perimeter} 
-                Area: {Area}";
+                Area: {Area}
+                ";
             }      
             else if(format == "R")
             {

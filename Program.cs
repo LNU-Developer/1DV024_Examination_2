@@ -6,9 +6,9 @@ namespace Examination_2
     {
         static void Main()
         {   
-           ShapeType testShape = ShapeType.Rectangle;
+           Rectangle test = new Rectangle(1,1);
            
-           Console.WriteLine(testShape);
+           Console.WriteLine(test.ToString("R"));
         }
     }
 }
