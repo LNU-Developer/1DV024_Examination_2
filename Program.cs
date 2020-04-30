@@ -6,7 +6,7 @@ namespace Examination_2
     {
         static void Main()
         {   
-           Ellipse test = new Ellipse(2);
+           Cuboid test = new Cuboid(3, 2, 1);
            
            Console.WriteLine(test.ToString("G"));
         }

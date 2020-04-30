@@ -17,17 +17,17 @@ namespace Examination_2
         { 
             get 
             {
-                return Math.PI*(Math.Sqrt(2*Math.Pow(Length/2, 2)+2*Math.Pow(Width/2, 2)));
+                return Math.PI*(Math.Sqrt(2*Math.Pow(Length*0,5, 2)+2*Math.Pow(Width*0,5, 2)));
             } 
         }
 
         //Constructor
-        public Ellipse(double hdiameter, double vdiameter): base(ShapeType.Rectangle, hdiameter, vdiameter)
+        public Ellipse(double hdiameter, double vdiameter): base(ShapeType.Ellipse, hdiameter, vdiameter)
         {
         }
 
         
-        public Ellipse(double diameter): base(ShapeType.Rectangle, diameter, diameter)
+        public Ellipse(double diameter): base(ShapeType.Ellipse, diameter, diameter)
         {
         }
     }
