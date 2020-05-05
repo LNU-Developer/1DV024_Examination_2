@@ -18,10 +18,13 @@ namespace Examination_2
                 int minimum = Convert.ToInt32(Console.ReadLine());
                 Console.Write("Please select the maximum value (integer): ");
                 int maximum = Convert.ToInt32(Console.ReadLine());
+                
                 dynamic[] types = RandomizeObjects(type, forms, maximum, minimum);
+
                 for (int i = 0; i<types.Length;i++) {
                     Console.WriteLine($"{types[i].ToString("R")}");
                 }
+            
             } else
             {
                 throw new FormatException($"{type} must be entered as '0' or '1'");
@@ -39,10 +42,10 @@ namespace Examination_2
                     switch ((ShapeType)index)
                     {
                         case ShapeType.Ellipse:
-                            objects[i] = new Ellipse(rnd.Next(minimum, maximum), rnd.Next(minimum, maximum));
+                            objects[i] = new Ellipse(rnd.Next(minimum, maximum+1), rnd.Next(minimum, maximum+1));
                         break;
                         case ShapeType.Rectangle:
-                            objects[i] = new Rectangle(rnd.Next(minimum, maximum), rnd.Next(minimum, maximum));
+                            objects[i] = new Rectangle(rnd.Next(minimum, maximum+1), rnd.Next(minimum, maximum+1));
                         break;
                     }
                 }
