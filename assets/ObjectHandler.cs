@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Examination_2
 {
@@ -43,10 +44,52 @@ namespace Examination_2
             return objects;
         }
         
-        private static dynamic[] PrintOut(dynamic[] objects) 
+        public static Dictionary<string, string>[] PrintOut(dynamic[] objects) 
         {
-            dynamic[] data = new dynamic[objects.Length];
-            return data;  
+            Dictionary<string, string>[] tableValues = new Dictionary<string, string>[objects.Length+1];   
+
+                for (int i = 0; i<objects.Length; i++) {
+                if(objects[i].is3D) {
+                    tableValues[0] = new Dictionary<string, string>();
+                    tableValues[0].Add("Figur", "Figur");
+                    tableValues[0].Add("Längd", "Längd");
+                    tableValues[0].Add("Bredd", "Bredd");
+                    tableValues[0].Add("Höjd", "Höjd");
+                    tableValues[0].Add("Mantelarea", "Mantelarea");
+                    tableValues[0].Add("Begräns. area", "Begräns. area");
+                    tableValues[0].Add("Volym", "Volym");
+                } else {
+                    tableValues[0] = new Dictionary<string, string>();
+                    tableValues[0].Add("Figur", "Figur");
+                    tableValues[0].Add("Längd", "Längd");
+                    tableValues[0].Add("Bredd", "Bredd");
+                    tableValues[0].Add("Omkrets", "Omkrets");
+                    tableValues[0].Add("Area", "Area");
+                }
+            }
+
+            for (int i = 1; i<objects.Length+1; i++) {
+                if(objects[i-1].is3D) {
+                    string[] split = objects[i-1].ToString("R").Split(" ");
+                    tableValues[i] = new Dictionary<string, string>();
+                    tableValues[i].Add("Figur", split[0]);
+                    tableValues[i].Add("Längd", split[1]);
+                    tableValues[i].Add("Bredd", split[2]);
+                    tableValues[i].Add("Höjd", split[3]);
+                    tableValues[i].Add("Mantelarea", split[4]);
+                    tableValues[i].Add("Begräns. area", split[5]);
+                    tableValues[i].Add("Volym", split[6]);
+                } else {
+                    string[] split = objects[i-1].ToString("R").Split(" ");
+                    tableValues[i] = new Dictionary<string, string>();
+                    tableValues[i].Add("Figur", split[0]);
+                    tableValues[i].Add("Längd", split[1]);
+                    tableValues[i].Add("Bredd", split[2]);
+                    tableValues[i].Add("Omkrets", split[3]);
+                    tableValues[i].Add("Area", split[4]);
+                }
+            }
+            return tableValues;  
         }
     }
 }

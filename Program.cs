@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Examination_2
 {
@@ -19,13 +21,18 @@ namespace Examination_2
                 Console.Write("Please select the maximum value (integer): ");
                 int maximum = Convert.ToInt32(Console.ReadLine());
                 
-                dynamic[] types = ObjectHandler.RandomizeObjects(type, forms, maximum, minimum);
+                dynamic[] objects = ObjectHandler.RandomizeObjects(type, forms, maximum, minimum);
+                Dictionary<string, string>[] printOut = ObjectHandler.PrintOut(objects);
 
-                for (int i = 0; i<types.Length;i++) {
-                    Console.WriteLine($"{types[i].ToString("R")}");
-                    Console.WriteLine(types[i].is3D);
+                for (int i = 0; i<printOut.Length;i++) {
+                    if(type == 1) 
+                    {
+                        Console.WriteLine($"{printOut[i].ElementAt(0).Value.PadRight(15, ' ')} {printOut[i].ElementAt(1).Value.PadRight(10, ' ')} {printOut[i].ElementAt(2).Value.PadRight(10, ' ')} {printOut[i].ElementAt(3).Value.PadRight(10, ' ')} {printOut[i].ElementAt(4).Value.PadRight(15, ' ')} {printOut[i].ElementAt(5).Value.PadRight(15, ' ')} {printOut[i].ElementAt(6).Value.PadRight(10, ' ')}");
+                    } else 
+                    {
+                        Console.WriteLine($"{printOut[i].ElementAt(0).Value.PadRight(15, ' ')} {printOut[i].ElementAt(1).Value.PadRight(10, ' ')} {printOut[i].ElementAt(2).Value.PadRight(10, ' ')} {printOut[i].ElementAt(3).Value.PadRight(10, ' ')} {printOut[i].ElementAt(4).Value.PadRight(10, ' ')}");
+                    }
                 }
-            
             } else
             {
                 throw new FormatException($"{type} must be entered as '0' or '1'");
