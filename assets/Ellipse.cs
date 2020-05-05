@@ -17,7 +17,7 @@ namespace Examination_2
         { 
             get 
             {
-                return Math.PI*(Math.Sqrt(2*Math.Pow(Length*0,5, 2)+2*Math.Pow(Width*0,5, 2)));
+                return Math.PI*(Math.Sqrt(2*Math.Pow(Length*0.5, 2)+2*Math.Pow(Width*0.5, 2)));
             } 
         }
 

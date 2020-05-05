@@ -71,7 +71,7 @@ namespace Examination_2
             }      
             else if(format == "R")
             {
-                return $"{ShapeType} {Length} {Width} {Perimeter} {Area}";
+                return $"{ShapeType} {Math.Round(Length, 1)} {Math.Round(Width, 1)} {Math.Round(Perimeter, 1)} {Math.Round(Area, 1)}";
             }
             else {
                 throw new FormatException(
