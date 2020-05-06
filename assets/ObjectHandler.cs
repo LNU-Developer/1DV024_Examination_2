@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Examination_2
 {
     public static class ObjectHandler
     {  
-        public static dynamic[] RandomizeObjects(int type, int n, int maximum, int minimum) 
+        public static dynamic[] RandomizeObjects(int type, int n, double maximum, double minimum) 
         {
             dynamic[] objects = new dynamic[n];
             if(type == 0) {
@@ -15,10 +16,10 @@ namespace Examination_2
                     switch ((ShapeType)index)
                     {
                         case ShapeType.Ellipse:
-                            objects[i] = new Ellipse(rnd.Next(minimum, maximum+1), rnd.Next(minimum, maximum+1));
+                            objects[i] = new Ellipse(rnd.NextDouble()* (maximum - minimum) + minimum, rnd.NextDouble()* (maximum - minimum) + minimum);
                         break;
                         case ShapeType.Rectangle:
-                            objects[i] = new Rectangle(rnd.Next(minimum, maximum+1), rnd.Next(minimum, maximum+1));
+                            objects[i] = new Rectangle(rnd.NextDouble()* (maximum - minimum) + minimum, rnd.NextDouble()* (maximum - minimum) + minimum);
                         break;
                     }
                 }
@@ -26,17 +27,17 @@ namespace Examination_2
             else if(type == 1) {
                 for (int i = 0; i < n; i++) {
                     Random rnd = new Random();
-                    int index = rnd.Next(3, 5);
+                    int index = rnd.Next(2, 5);
                     switch ((ShapeType)index)
                     {
                         case ShapeType.Sphere:
-                            objects[i] = new Sphere(rnd.Next(minimum, maximum+1));
+                            objects[i] = new Sphere(rnd.NextDouble()* (maximum - minimum) + minimum);
                         break;
                         case ShapeType.Cuboid:
-                            objects[i] = new Cuboid(rnd.Next(minimum, maximum+1), rnd.Next(minimum, maximum+1), rnd.Next(minimum, maximum+1));
+                            objects[i] = new Cuboid(rnd.NextDouble()* (maximum - minimum) + minimum, rnd.NextDouble()* (maximum - minimum) + minimum, rnd.NextDouble()* (maximum - minimum) + minimum);
                         break;
                         case ShapeType.Cylinder:
-                            objects[i] = new Cylinder(rnd.Next(minimum, maximum+1), rnd.Next(minimum, maximum+1), rnd.Next(minimum, maximum+1));
+                            objects[i] = new Cylinder(rnd.NextDouble()* (maximum - minimum) + minimum, rnd.NextDouble()* (maximum - minimum) + minimum, rnd.NextDouble()* (maximum - minimum) + minimum);
                         break;
                     }
                 }
@@ -44,52 +45,30 @@ namespace Examination_2
             return objects;
         }
         
-        public static Dictionary<string, dynamic>[] PrintOut(dynamic[] objects) 
+        public static List<dynamic[]> PrintOut(dynamic[] objects) 
         {
-            Dictionary<string, dynamic>[] tableValues = new Dictionary<string, dynamic>[objects.Length+1];   
+            List<dynamic[]> tableValues = new List<dynamic[]>();
 
-                for (int i = 0; i<objects.Length; i++) {
-                if(objects[i].is3D) {
-                    tableValues[0] = new Dictionary<string, dynamic>();
-                    tableValues[0].Add("Figur", "Figur");
-                    tableValues[0].Add("Längd", "Längd");
-                    tableValues[0].Add("Bredd", "Bredd");
-                    tableValues[0].Add("Höjd", "Höjd");
-                    tableValues[0].Add("Mantelarea", "Mantelarea");
-                    tableValues[0].Add("Begräns. area", "Begräns. area");
-                    tableValues[0].Add("Volym", "Volym");
+            for (int i = 0; i<objects.Length; i++) {
+                if(objects[i].is3D) { 
+                    string[] stringValues = objects[i].ToString("R").Split(" ");
+                    dynamic[] cleanedValues = new dynamic[] {stringValues[0], stringValues[1], stringValues[2], stringValues[3], stringValues[4], stringValues[5], double.Parse(stringValues[6])};
+                    tableValues.Add(cleanedValues);
                 } else {
-                    tableValues[0] = new Dictionary<string, dynamic>();
-                    tableValues[0].Add("Figur", "Figur");
-                    tableValues[0].Add("Längd", "Längd");
-                    tableValues[0].Add("Bredd", "Bredd");
-                    tableValues[0].Add("Omkrets", "Omkrets");
-                    tableValues[0].Add("Area", "Area");
+                    string[] stringValues = objects[i].ToString("R").Split(" ");
+                    dynamic[] cleanedValues = new dynamic[] {stringValues[0], stringValues[1], stringValues[2], stringValues[3], double.Parse(stringValues[4])};
+                    tableValues.Add(cleanedValues);
                 }
             }
-
-            for (int i = 1; i<objects.Length+1; i++) {
-                if(objects[i-1].is3D) {
-                    string[] split = objects[i-1].ToString("R").Split(" ");
-                    tableValues[i] = new Dictionary<string, dynamic>();
-                    tableValues[i].Add("Figur", split[0]);
-                    tableValues[i].Add("Längd", split[1]);
-                    tableValues[i].Add("Bredd", split[2]);
-                    tableValues[i].Add("Höjd", split[3]);
-                    tableValues[i].Add("Mantelarea", split[4]);
-                    tableValues[i].Add("Begräns. area", split[5]);
-                    tableValues[i].Add("Volym", split[6]);
-                } else {
-                    string[] split = objects[i-1].ToString("R").Split(" ");
-                    tableValues[i] = new Dictionary<string, dynamic>();
-                    tableValues[i].Add("Figur", split[0]);
-                    tableValues[i].Add("Längd", split[1]);
-                    tableValues[i].Add("Bredd", split[2]);
-                    tableValues[i].Add("Omkrets", split[3]);
-                    tableValues[i].Add("Area", split[4]);
-                }
+            int arrayLength = tableValues.ElementAt(0).Length;
+            List<dynamic[]> sortedList = tableValues.OrderBy(x => x[0]).ThenByDescending(x => x[arrayLength-1]).ToList();
+            
+            for (int z = 0; z< sortedList.Count; z++) {
+                sortedList.ElementAt(z)[arrayLength-1] = sortedList.ElementAt(z)[arrayLength-1].ToString(); 
             }
-            return tableValues;  
+            
+
+            return sortedList;  
         }
     }
 }
