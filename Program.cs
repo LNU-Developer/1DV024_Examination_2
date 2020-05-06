@@ -22,7 +22,7 @@ namespace Examination_2
                 int maximum = Convert.ToInt32(Console.ReadLine());
                 
                 dynamic[] objects = ObjectHandler.RandomizeObjects(type, forms, maximum, minimum);
-                Dictionary<string, string>[] printOut = ObjectHandler.PrintOut(objects);
+                Dictionary<string, dynamic>[] printOut = ObjectHandler.PrintOut(objects);
 
                 for (int i = 0; i<printOut.Length;i++) {
                     if(type == 1) 
