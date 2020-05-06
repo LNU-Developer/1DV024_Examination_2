@@ -8,7 +8,6 @@ namespace Examination_2
     {
         static void Main()
         {   
-            
             Console.Write("Please select 2D or 3D forms (0/1): ");
             string line1 = Console.ReadLine();
             int type = StringConverter.TypeSelection(line1);
