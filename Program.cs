@@ -29,14 +29,14 @@ namespace Examination_2
 
             if(type == 1) 
             {
-                Console.WriteLine($"{"Figur".PadRight(15, ' ')} {"Längd".PadRight(10, ' ')} {"Bredd".PadRight(10, ' ')} {"Höjd".PadRight(10, ' ')} {"Mantelarea".PadRight(15, ' ')} {"Begräns. area".PadRight(15, ' ')} {"Volym".PadRight(10, ' ')}");
+                Console.WriteLine($"{"Shape".PadRight(15, ' ')} {"Length".PadRight(10, ' ')} {"Width".PadRight(10, ' ')} {"Height".PadRight(10, ' ')} {"Mantel area".PadRight(15, ' ')} {"Tot. surf. area".PadRight(18, ' ')} {"Volume".PadRight(10, ' ')}");
                 for (int i = 0; i<printOut.Count;i++) {        
-                    Console.WriteLine($"{printOut.ElementAt(i)[0].PadRight(15, ' ')} {printOut.ElementAt(i)[1].PadRight(10, ' ')} {printOut.ElementAt(i)[2].PadRight(10, ' ')} {printOut.ElementAt(i)[3].PadRight(10, ' ')} {printOut.ElementAt(i)[4].PadRight(15, ' ')} {printOut.ElementAt(i)[5].PadRight(15, ' ')} {printOut.ElementAt(i)[6].PadRight(10, ' ')}");
+                    Console.WriteLine($"{printOut.ElementAt(i)[0].PadRight(15, ' ')} {printOut.ElementAt(i)[1].PadRight(10, ' ')} {printOut.ElementAt(i)[2].PadRight(10, ' ')} {printOut.ElementAt(i)[3].PadRight(10, ' ')} {printOut.ElementAt(i)[4].PadRight(15, ' ')} {printOut.ElementAt(i)[5].PadRight(18, ' ')} {printOut.ElementAt(i)[6].PadRight(10, ' ')}");
                 }                  
             } 
             else 
             {
-                Console.WriteLine($"{"Figur".PadRight(15, ' ')} {"Längd".PadRight(10, ' ')} {"Bredd".PadRight(10, ' ')} {"Omkrets".PadRight(10, ' ')} {"Area".PadRight(10, ' ')}");
+                Console.WriteLine($"{"Shape".PadRight(15, ' ')} {"Length".PadRight(10, ' ')} {"Width".PadRight(10, ' ')} {"Perimeter".PadRight(10, ' ')} {"Area".PadRight(10, ' ')}");
                 for (int i = 0; i<printOut.Count;i++) { 
                     Console.WriteLine($"{printOut.ElementAt(i)[0].PadRight(15, ' ')} {printOut.ElementAt(i)[1].PadRight(10, ' ')} {printOut.ElementAt(i)[2].PadRight(10, ' ')} {printOut.ElementAt(i)[3].PadRight(10, ' ')} {printOut.ElementAt(i)[4].PadRight(10, ' ')}");
                 }
