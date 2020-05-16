@@ -5,7 +5,7 @@ namespace Examination_2
     public abstract class Shape3D: Shape
     {  
         //Fields
-        private protected Shape2D _baseShape;
+        protected Shape2D _baseShape;
         private double _height;
 
         //Properties
